@@ -1,0 +1,672 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #0d3b66;
+  --forest: #283618;
+  --cream: #f7f5f0;
+  --gold: #f4d35e;
+  --orange: #ee964b;
+  --tomato: #f95738;
+
+  --white: #ffffff;
+  --muted: #6f7882;
+  --border: rgba(13, 59, 102, 0.12);
+  --shadow: 0 10px 30px rgba(13, 59, 102, 0.08);
+  --shadow-hover: 0 18px 40px rgba(13, 59, 102, 0.15);
+  --radius: 16px;
+}
+
+/* =========================
+BASE
+========================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  padding-top: 145px;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: "Inter", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+h2,
+h4 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: rgba(247, 245, 240, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Top part of header */
+
+.prop {
+  max-width: 1400px;
+  margin: auto;
+  min-height: 85px;
+  padding: 18px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Logo */
+
+#logo {
+  color: var(--navy);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+#icon {
+  color: var(--tomato);
+  font-size: 1.1em;
+  vertical-align: middle;
+}
+
+/* =========================
+SEARCH + CART
+========================= */
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cart-link button,
+#close-cart {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--cream);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.cart-link button:hover,
+#close-cart:hover {
+  background: var(--tomato);
+  transform: translateY(-2px);
+}
+
+.cart-link input {
+  width: 190px;
+  padding: 11px 4px;
+  border: none;
+  border-bottom: 2px solid var(--orange);
+  outline: none;
+  background: transparent;
+  color: var(--navy);
+}
+
+.cart-link input::placeholder {
+  color: var(--muted);
+}
+
+.cart-link input:focus {
+  border-color: var(--tomato);
+}
+
+/* =========================
+CATEGORY NAVIGATION
+========================= */
+
+.items-link {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 30px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.items-link::-webkit-scrollbar {
+  display: none;
+}
+
+.items-link button {
+  flex-shrink: 0;
+  padding: 9px 17px;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  background: transparent;
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.items-link button:hover {
+  background: rgba(244, 211, 94, 0.35);
+  transform: translateY(-1px);
+}
+
+.items-link button.active {
+  background: var(--tomato);
+  color: var(--cream);
+}
+
+/* =========================
+MAIN CONTAINER
+========================= */
+
+.container {
+  width: min(1400px, 100%);
+  margin: auto;
+  padding: 0 30px 60px;
+}
+
+/* =========================
+ RECENTLY VIEWED
+========================= */
+
+.recent {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 90;
+  padding: 10px 30px;
+  background: rgba(247, 245, 240, 0.94);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -8px 25px rgba(13, 59, 102, 0.08);
+}
+
+/* Title */
+
+.recent > h2 {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--navy);
+}
+
+/* Recent products */
+
+#recent {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 2px 0 5px;
+  scrollbar-width: none;
+}
+
+#recent::-webkit-scrollbar {
+  display: none;
+}
+
+#recent > * {
+  flex-shrink: 0;
+}
+
+/* Recent images */
+
+#recent img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--orange);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+#recent img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 3px var(--tomato);
+}
+/* Prevent the fixed bar from covering
+the last products */
+
+body {
+  padding-bottom: 110px;
+}
+
+/* =========================
+PRODUCT SECTIONS
+========================= */
+
+#items-con {
+  width: 100%;
+}
+
+.section {
+  width: 100%;
+}
+
+#home,
+#dress,
+#it,
+#shoe,
+#bag,
+#utensil,
+#beauty,
+#jewelry,
+#search-results {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+
+  gap: 24px;
+
+  width: 100%;
+}
+
+/* =========================
+PRODUCT CARD
+========================= */
+
+.item {
+  position: relative;
+
+  overflow: hidden;
+
+  background: var(--white);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.item:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Product image */
+
+.item img {
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.item:hover img {
+  transform: scale(1.05);
+}
+
+/* =========================
+PRODUCT INFO
+========================= */
+
+.info {
+  min-height: 105px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item h4 {
+  margin: 12px;
+  color: var(--navy);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.info p {
+  margin: 0;
+  color: var(--tomato);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* Add to cart */
+
+.info button {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 30px;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.info button:hover {
+  background: var(--tomato);
+  transform: translateY(-2px);
+}
+
+/* =========================
+MODAL
+========================= */
+
+dialog {
+  width: min(520px, 90%);
+  max-height: 90vh;
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 22px;
+  background: var(--cream);
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(13, 59, 102, 0.25);
+}
+
+dialog::backdrop {
+  background: rgba(13, 59, 102, 0.65);
+  backdrop-filter: blur(5px);
+}
+
+#modal-content {
+  padding-bottom: 25px;
+}
+
+#modal-content img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+}
+
+#close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+#close-modal:hover {
+  background: var(--tomato);
+  color: var(--cream);
+}
+
+/* =========================
+CART DRAWER
+========================= */
+
+.carts aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(390px, 90vw);
+  height: 100vh;
+  padding: 30px;
+  background: var(--cream);
+  border-left: 1px solid var(--border);
+  box-shadow: -15px 0 45px rgba(13, 59, 102, 0.12);
+  overflow-y: auto;
+  z-index: 200;
+}
+
+.carts aside h2 {
+  color: var(--tomato);
+}
+
+/* Cart items */
+
+.cart-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-product,
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.group {
+  gap: 0;
+  padding-bottom: 18px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+#product {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+#product span {
+  color: var(--tomato);
+}
+
+#prices,
+#quantity {
+  font-weight: 700;
+}
+
+#cart-total {
+  padding-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.cart-product {
+  padding-top: 10px;
+}
+
+.action,
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+[data-action="plus"],
+[data-action="minus"] {
+  color: var(--tomato);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+/* =========================
+HIDDEN ELEMENTS
+========================= */
+
+[hidden] {
+  display: none !important;
+}
+
+/* =========================
+TABLET
+========================= */
+
+@media (max-width: 800px) {
+  body {
+    padding-top: 130px;
+  }
+
+  .prop {
+    min-height: 75px;
+    padding: 15px 20px;
+  }
+
+  .container {
+    padding-inline: 20px;
+  }
+
+  .items-link {
+    padding-inline: 20px;
+  }
+
+  #home,
+  #dress,
+  #it,
+  #shoe,
+  #bag,
+  #utensil,
+  #beauty,
+  #jewelry,
+  #search-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+  .info {
+    min-height: 95px;
+  }
+
+  .item img {
+    height: 220px;
+  }
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media (max-width: 520px) {
+  body {
+    padding-top: 125px;
+  }
+
+  .prop {
+    padding: 12px 15px;
+    gap: 12px;
+  }
+
+  #logo {
+    font-size: 1.25rem;
+  }
+
+  .cart-link {
+    gap: 8px;
+  }
+
+  .cart-link input {
+    width: 120px;
+  }
+
+  .cart-link button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .items-link {
+    padding: 0 15px 12px;
+    gap: 6px;
+  }
+
+  .items-link button {
+    padding: 8px 13px;
+    font-size: 0.75rem;
+  }
+
+  .container {
+    padding-inline: 15px;
+  }
+
+  #home,
+  #dress,
+  #it,
+  #shoe,
+  #bag,
+  #utensil,
+  #beauty,
+  #jewelry,
+  #search-results {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .item {
+    border-radius: 13px;
+  }
+
+  .item img {
+    height: 180px;
+  }
+
+  .info {
+    min-height: 85px;
+    padding: 11px;
+    gap: 8px;
+  }
+
+  .info h4 {
+    font-size: 0.8rem;
+  }
+
+  .info p {
+    font-size: 0.85rem;
+  }
+
+  .info button {
+    padding: 7px 11px;
+    font-size: 0.7rem;
+  }
+
+  dialog {
+    width: 92%;
+  }
+
+  #modal-content img {
+    height: 350px;
+  }
+}
