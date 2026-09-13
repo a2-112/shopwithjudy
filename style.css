@@ -607,17 +607,20 @@ MOBILE
     width: 120px;
   }
 
-  .cart-link button {
+  .cart-link button, #close-cart{
     width: 20px;
     height: 20px;
   }
-  .cart-link button span{
+  .cart-link button span,   #close-cart span{
     font-size: 0.85rem;
   }
     input[type=search]{
-     max-width: 80px;
+     max-width: 90px;
       padding: 5px 2px;
-
+      font-size: 0.75rem;
+    }
+    .group h2{
+      font-size: 1.2rem;
     }
     input::placeholder{
       font-size: 0.75rem;
