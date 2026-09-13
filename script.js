@@ -11,6 +11,8 @@ const categoryContainers = {
   jewelry: document.getElementById("jewelry"),
 };
 
+const saved = JSON.parse(localStorage.getItem("cart")) || []
+
 /*====== DOM ====== */
 const itemLink = document.querySelector(".items-link");
 const dialog = document.querySelector("dialog");
@@ -57,7 +59,7 @@ class Cache {
 }
 const capacity = new Cache(5);
 
-const cartMap = new Map();
+const cartMap = new Map(saved)  
 // Use to identify product,quantity and add product if not present in cart
 const addToCart = (product) => {
   if (cartMap.has(product.id)) {
@@ -148,7 +150,10 @@ const renderCart = () => {
     cartCard(entry, cart);
   }
   cartTotal.textContent = `Total: $${total}`;
+  localStorage.setItem("cart", JSON.stringify([...cartMap.entries()]))
+
 };
+renderCart()
 /*======================================= */
 
 /*===== Events ===== */
