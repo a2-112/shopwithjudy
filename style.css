@@ -525,6 +525,10 @@ CART DRAWER
   font-size: 1.2rem;
   font-weight: 800;
 }
+::selection {
+    background-color: transparent;
+    color: var(--orange);
+}
 
 /* =========================
 HIDDEN ELEMENTS
@@ -604,10 +608,20 @@ MOBILE
   }
 
   .cart-link button {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
   }
+  .cart-link button span{
+    font-size: 0.85rem;
+  }
+    input[type=search]{
+     max-width: 80px;
+      padding: 5px 2px;
 
+    }
+    input::placeholder{
+      font-size: 0.75rem;
+    }
   .items-link {
     padding: 0 15px 12px;
     gap: 6px;
