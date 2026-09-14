@@ -54,7 +54,7 @@ class Cache {
       this.cache.delete([...this.cache.keys()][0]);
     }
     this.cache.set(key, value);
-    views.innerHTML += `<img src="${value}">`;
+views.innerHTML += `<img src="${value.image}" data-id="${value.id}" alt="${value.name}">`
   }
 }
 const capacity = new Cache(5);
@@ -137,7 +137,7 @@ const renderRecent = () => {
   views.innerHTML = ""; // clear first
   // loop through capacity.cache's current values and rebuild the strip
   for (const value of capacity.cache.values()) {
-    views.innerHTML += `<img src="${value}">`;
+ views.innerHTML += `<img src="${value.image}" data-id="${value.id}" alt="${value.name}">`
   }
 };
 // Update cartCard with the accurate details from cartMap and returns the total sum of all cart selected
@@ -196,7 +196,7 @@ main.addEventListener("click", (e) => {
     const value = itemDiv.dataset.id;
     const all = products.filter((item) => item.id === Number(value));
     all.map((img) => {
-      capacity.put(img.id, img.image);
+      capacity.put(img.id, img);
       renderRecent();
     });
     dialog.hidden = false;
@@ -230,6 +230,18 @@ input.addEventListener("input", () => {
 });
 closeCart.addEventListener("click",() => {
      document.querySelector(".carts").toggleAttribute("hidden")
+})
+
+views.addEventListener("click", (e) => {
+    const img = e.target.closest("img")
+    if (!img) return
+    
+    const value = img.dataset.id
+    const all = products.filter((item) => item.id === Number(value))
+    
+    dialog.showModal()
+    modal.innerHTML = ""
+    createCard(all, modal)
 })
 
 itemLink.addEventListener("click", (e) => {

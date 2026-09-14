@@ -234,7 +234,7 @@ MAIN CONTAINER
   align-items: center;
   gap: 14px;
   overflow-x: auto;
-  padding: 2px 0 5px;
+  padding: 5px 0 8px 5px;
   scrollbar-width: none;
 }
 
@@ -449,7 +449,7 @@ CART DRAWER
   position: fixed;
   top: 0;
   right: 0;
-  width: min(390px, 90vw);
+  width: min(350px, 90vw);
   height: 100vh;
   padding: 30px;
   background: var(--cream);
@@ -468,6 +468,13 @@ CART DRAWER
 .cart-item {
   padding: 16px 0;
   border-bottom: 1px solid var(--border);
+}
+.cart-item img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .cart-product,
@@ -526,8 +533,8 @@ CART DRAWER
   font-weight: 800;
 }
 ::selection {
-    background-color: transparent;
-    color: var(--orange);
+     background-color: var(--navy);
+    color: var(--cream);
 }
 
 /* =========================
@@ -686,4 +693,18 @@ MOBILE
   #modal-content img {
     height: 350px;
   }
+  #recent img {
+  width: 42px;
+  height: 42px;
+}
+#cart, #cart-total{
+  font-size: 0.85rem;
+}
+.carts aside {
+  width: min(250px, 90vw);
+}
+.cart-item img {
+    width: 180px;
+    height: 180px;
+}
 }
